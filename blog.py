@@ -1,6 +1,7 @@
 blog.py - controller
 from flask import from flask import Flask, render_template, request, session, \
     flash, redirect, url_for, g
+import sqlite3
 
 # database configuration
 DATABASE = 'blog.db'
