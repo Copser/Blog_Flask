@@ -1,7 +1,9 @@
 # blog.py - controller
+from functools import wraps
+import sqlite3
 from flask import Flask, render_template, request, session, \
     flash, redirect, url_for, g
-import sqlite3
+
 
 # database configuration
 DATABASE = 'blog.db'
@@ -17,6 +19,17 @@ app.config.from_object(__name__)
 # function used for connecting to the database
 def connect_db():
     return sqlite3.connect(app.config['DATABASE_PATH'])
+
+
+def login_required(test):
+    @wraps(test)
+    def wraps(*args, **kwargs):
+        if 'logged_in' in session:
+            return test(*args, **kwargs)
+        else:
+            flash('You need to login first!')
+            return redirect(url_for('login'))
+    return wraps
 
 
 # Adding function for are views
