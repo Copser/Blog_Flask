@@ -57,7 +57,7 @@ def main():
 
 
 # adding add function so are user can add posts
-@app.route('/add', methods=['POSTS'])
+@app.route('/add', methods=['POST'])
 @login_required
 def add():
     title = request.form['title']
