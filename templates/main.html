@@ -2,6 +2,14 @@
 {% block content %}
 	<h2>Welcome to the Flask Blog!</h2>
 	<p><a href="/logout">Logout</a></p>
+	<h3>Add a New Post:</h3>
+	<form action="{{ url_for('add') }}" method="post" class="add" accept-charset="utf-8">
+		<label><input type="" name="" value=""><strong>Title:</strong></label>
+		<input type="text" name="title" value="" placeholder="">
+		<p><label><input type="" name="" value=""><strong>Post:</strong></label><br>
+		<textarea name="post" rows="5" cols="40"></textarea></p>
+		<input class="button" type="submit" name="" value="Save" placeholder="">
+	</form>
 	<br />
 	<br />
 	<h3>Posts:</h3>
